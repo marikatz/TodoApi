@@ -1,3 +1,4 @@
+using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TodoApi.Data;
@@ -28,6 +29,9 @@ app.Lifetime.ApplicationStarted.Register(() =>
     var db = scope.ServiceProvider.GetRequiredService<TodoDbContext>();
     db.Database.EnsureCreated(); // <--- This line creates the DB and tables if they don't exist
 });
+
+app.MapGet("api/version", (TodoDbContext db) => Results.Ok("New Version deployed"));
+
 
 // Define API endpoints
 app.MapGet("/api/todos", async (TodoDbContext db) =>
