@@ -30,6 +30,7 @@ A minimal .NET 7 Web API that demonstrates modern DevOps practices: containeriza
    git clone https://github.com/yourusername/TodoApi.git 
    cd TodoApi
 
+---
 ## API Documentation – Swagger UI
 This project uses Swagger (OpenAPI) to document and test API endpoints in a browser.
 
