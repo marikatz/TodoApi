@@ -11,7 +11,6 @@
 
   <ItemGroup>
     <None Include=".github\workflows\deploy-to-azure.yml" />
-    <None Include=".github\workflows\deploy.yml" />
   </ItemGroup>
 
   <ItemGroup>
