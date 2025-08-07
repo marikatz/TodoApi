@@ -1,3 +1,5 @@
+using System;
+using System.Reflection;
 using System.Reflection.Metadata.Ecma335;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -30,7 +32,11 @@ app.Lifetime.ApplicationStarted.Register(() =>
     db.Database.EnsureCreated(); // <--- This line creates the DB and tables if they don't exist
 });
 
-app.MapGet("api/check", (TodoDbContext db) => Results.Ok("New Version deployed"));
+app.MapGet("api/version", () =>
+{
+    var version = Assembly.GetExecutingAssembly().GetName().Version?.ToString() ?? "unknown";
+    return Results.Ok($"Version {version}");
+});
 
 
 // Define API endpoints
