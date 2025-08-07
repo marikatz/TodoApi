@@ -24,6 +24,11 @@ jobs:
         docker build -t ${{ secrets.AZURE_CONTAINER_IMAGE }} .
         docker push ${{ secrets.AZURE_CONTAINER_IMAGE }}
 
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: Deploy to Azure Web App
       uses: azure/webapps-deploy@v2
       with:
